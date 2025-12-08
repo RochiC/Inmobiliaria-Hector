@@ -316,15 +316,24 @@ font-size: 0.9rem;
 color: #ffffff;
 }
 
-.footer-logo {
-    margin-bottom: 0.5rem;
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-.footer-logo img {
-    height: 60px;       /* ajustá el tamaño que te guste */
+.footer-brand img {
+  height: 90px;      /* acá controlás el tamaño: probá 24, 32, 40 */
     width: auto;
     display: block;
 }
+
+.footer-col h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+
 
 .footer-bottom {
 font-size: 0.8rem;
