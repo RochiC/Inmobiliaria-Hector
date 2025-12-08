@@ -170,7 +170,7 @@ color: #555;
 
 .properties-grid {
 display: grid;
-gap: 1.5rem;
+gap: 1.6rem;
 grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
@@ -186,7 +186,7 @@ flex-direction: column;
 
 .property-image {
     position: relative;
-    height: 20rem;
+    height: 16rem;
     overflow: hidden;
 }
 
@@ -369,4 +369,31 @@ nav ul.show {
 .menu-toggle {
     display: block;
 }
+}
+
+@media (max-width: 600px) {
+    .hero {
+    padding: 3rem 1.2rem;      /* menos alto y un poco más de margen lateral */
+    text-align: left;          /* o center si te gusta más centrado */
+    }
+
+    .hero h1 {
+    font-size: 1.5rem;         /* título más chico para que no se corte */
+    }
+
+    .hero p {
+    font-size: 0.9rem;
+    max-width: 100%;           /* que use todo el ancho disponible */
+    }
+
+    .hero-cta {
+    flex-direction: column;    /* botones uno abajo del otro */
+    align-items: flex-start;   /* o center si preferís centrados */
+    gap: 0.5rem;
+    }
+
+    .btn {
+    width: 100%;               /* botón ocupa todo el ancho del contenedor */
+    text-align: center;
+    }
 }
