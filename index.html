@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>HECTOR ROLANDO BRAGANZA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Vincular el CSS externo -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,162 +11,111 @@
     <!-- HEADER -->
     <header>
     <div class="top-bar">
-    <span>Tel: 2267-402688</span>
-    <span>|</span>
-    <span>Braganzaagro@gmail.com</span>
+        <span>Tel: 2267-402688</span>
+        <span>|</span>
+        <span>Braganzaagro@gmail.com</span>
     </div>
     <div class="nav-container">
-    <div class="logo"></div>
-    <nav>
-        <div class="menu-toggle" onclick="scrollToSection()">☰</div>
+        <div class="logo"></div>
+        <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul id="nav-menu">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#venta">En venta</a></li>
         <li><a href="#contacto">Contacto</a></li>
         </ul>
-    </nav>
+        </nav>
     </div>
-</header>
+    </header>
 
-<!-- HERO -->
-<section class="hero" id="inicio">
+    <!-- HERO -->
+    <section class="hero" id="inicio">
     <div class="hero-content">
-    <h1>Inmobiliaria Hector Braganza</h1>
-    <div class="hero-cta">
+        <h1>Inmobiliaria Hector Braganza</h1>
+        <div class="hero-cta">
         <button class="btn btn-primary" onclick="scrollToSection('venta')">
-        Ver propiedades en venta
-        <button class="btn btn-primary" onclick="scrollToSection('contacto')">
-        Contactar
+            Ver propiedades en venta
         </button>
+        <button class="btn btn-primary" onclick="scrollToSection('contacto')">
+            Contactar
+        </button>
+        </div>
     </div>
-    </div>
-</section>
+    </section>
 
-<!-- PROPIEDADES EN VENTA -->
-<main>
+    <!-- PROPIEDADES EN VENTA -->
+    <main>
     <div class="section-title" id="venta">
-    <h2>Propiedades en venta</h2>
-    <p>Terrenos y departamentos en zonas elegidas, pensados para tu bienestar y el de tu familia.</p>
+        <h2>Propiedades en venta</h2>
+        <p>Terrenos y departamentos en zonas elegidas, pensados para tu bienestar y el de tu familia.</p>
     </div>
 
-    <div class="properties-grid">
-
-    <!-- CARD TERRENO -->
-    <article class="property-card">
-        <div class="property-image">
-            <img src="terreno hector.png"/>
-        </div>
-        <div class="property-body">
-        <div class="property-tag">En venta · Lote</div>
-        <h3 class="property-title">Chacra en General Madariaga</h3>
-        <p class="property-location">Chacra de 5 hectáreas</p>
-        <div class="property-meta">
-            <span>Sup. 500 m²</span>
-            <span>Frente arbolado</span>
-            <span>Zona residencial</span>
-        </div>
-        <div class="property-price">USD ??</div>
-        </div>
-        <div class="property-footer">
-        <a href="#contacto">Ver más detalles</a>
-        </div>
-    </article>
-
-    <!-- CARD DEPARTAMENTO -->
-    <article class="property-card">
-        <div class="property-image"> 
-            <button class="carousel-btn prev" onclick="cambiarImagenDepto(-1)">‹</button>
-            <img id="depto-carousel" src="fotodepto-1.jpg" alt="Departamento 2 ambientes" />
-            <button class="carousel-btn next" onclick="cambiarImagenDepto(1)">›</button>
-        </div>
-        <div class="property-body">
-        <div class="property-tag">En venta · Departamento</div>
-        <h3 class="property-title">Departamento 2 ambientes en Villa Gesell</h3>
-        <p class="property-location">Av3 (calle principal) y 128 a dos cuadras del muelle</p>
-        <div class="property-meta">
-            <p>Cerca de plazas para esparcimiento con mucho verde, está en el tercer piso, tiene expensas bajas, 
-                no tiene porteria, y tiene ascensor</p>
-        </div>
-        <div class="property-price">USD 70.000</div>
-        </div>
-        <div class="property-footer">
-        <a href="#contacto">Ver más detalles</a>
-        </div>
-    </article>
+    <!-- Botones de navegación a secciones -->
+    <div class="property-filters">
+        <button class="filter-pill" data-target="casas">CASAS Y DEPARTAMENTOS</button>
+        <button class="filter-pill" data-target="lotes">LOTES Y CHACRAS</button>
+        <button class="filter-pill" data-target="x1">X</button>
+        <button class="filter-pill" data-target="x2">X</button>
     </div>
-</main>
 
-<!-- FOOTER -->
-<footer id="contacto">
-<div class="footer-inner">
+    <!-- SECCIÓN CASAS Y DEPARTAMENTOS -->
+    <section id="casas" class="property-section">
+        <h3 class="property-section-title">CASAS Y DEPARTAMENTOS</h3>
+        <div class="properties-grid">
+        <!-- aquí van tus cards de deptos/casas -->
+        </div>
+    </section>
+
+    <!-- SECCIÓN LOTES Y CHACRAS -->
+    <section id="lotes" class="property-section">
+        <h3 class="property-section-title">LOTES Y CHACRAS</h3>
+        <div class="properties-grid">
+        <!-- aquí van tus cards de chacras/lotes -->
+        </div>
+    </section>
+
+    <!-- SECCIÓN X1 -->
+    <section id="x1" class="property-section">
+        <h3 class="property-section-title">X</h3>
+        <div class="properties-grid">
+        <!-- cards X -->
+        </div>
+    </section>
+
+    <!-- SECCIÓN X2 -->
+    <section id="x2" class="property-section">
+        <h3 class="property-section-title">X</h3>
+        <div class="properties-grid">
+        <!-- vacío -->
+        </div>
+    </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+    <div class="footer-inner">
     <div class="footer-columns">
-    <!-- Columna 1: logo + nombre -->
-    <div class="footer-col">
+        <div class="footer-col">
         <div class="footer-brand">
-        <img src="logo.png" alt="Logo Inmobiliaria Héctor Braganza">
-        <h4>Inmobiliaria Hector Braganza</h4>
+            <img src="logo.png" alt="Logo Inmobiliaria Héctor Braganza">
+            <h4>Inmobiliaria Hector Braganza</h4>
         </div>
-    </div>
+        </div>
 
-    <!-- Columna 2: contacto -->
-    <div class="footer-col">
+        <div class="footer-col">
         <h4>Contacto</h4>
         <p>Tel: 2267-402688</p>
         <p>Email: Braganzaagro@gmail.com</p>
         <p>Instagram: hectorbraganza.ok</p>
-    </div>
+        </div>
     </div>
 
     <div class="footer-bottom">
-    <span>© Desarrollado por Rocio Casares</span>
+        <span>© Desarrollado por Rocio Casares</span>
     </div>
     </div>
-</footer>
+    </footer>
 
-
-<script>
-    function toggleMenu() {
-    const menu = document.getElementById("nav-menu");
-    menu.classList.toggle("show");
-    }
-
-    function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-    }
-    }
-
-    function toggleMenu() {
-    const menu = document.getElementById("nav-menu");
-    menu.classList.toggle("show");
-    }
-
-    function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-    }
-    }
-
-  // ----- CARRUSEL DEPARTAMENTO -----
-    const imagenesDepto = [
-    "fotodepto-1.jpg",
-    "foto depto 2.jpg",
-    "foto depto 3.jpg",
-    "foto depto 4.jpg",
-    "foto depto 5.jpg"
-    ];
-
-    let indiceActualDepto = 0;
-    const imgDepto = document.getElementById("depto-carousel");
-
-    function cambiarImagenDepto() {
-    indiceActualDepto = (indiceActualDepto + 1) % imagenesDepto.length;
-    imgDepto.src = imagenesDepto[indiceActualDepto];
-    }
-
-</script>
-
+    <script src="main.js"></script>
 </body>
 </html>

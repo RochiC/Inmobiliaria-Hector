@@ -213,17 +213,30 @@ flex-direction: column;
     text-align: center;
 }
 
-.carousel-btn.prev {
-    left: 8px;
-}
-
-.carousel-btn.next {
-    right: 8px;
-}
+.carousel-btn.prev { left: 8px; }
+.carousel-btn.next { right: 8px; }
 
 .carousel-btn:hover {
     background: rgba(0, 0, 0, 0.6);
 }
+
+.property-section {
+    margin-top: 2.5rem;
+}
+
+.property-section-title {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    border-radius: 999px;
+    border: 2px solid var(--color-principal);
+    background: #fff;
+    color: var(--color-principal);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
 
 .property-body {
 padding: 1rem;
