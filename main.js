@@ -12,8 +12,7 @@ function scrollToSection(id) {
     }
 }
 
-// ----- CARRUSEL GENÉRICO PARA TODAS LAS PROPIEDADES -----
-
+// carrusel genérico (lo que ya tenías)
 function initPropertyCarousels() {
     const carousels = document.querySelectorAll(".property-image[data-images]");
 
@@ -48,8 +47,7 @@ function initPropertyCarousels() {
     });
 }
 
-// ----- MOSTRAR / OCULTAR SECCIONES POR BOTÓN -----
-
+// mostrar / ocultar secciones por botón
 function initSectionToggles() {
     const buttons = document.querySelectorAll(".filter-pill");
     const sections = {
@@ -59,18 +57,18 @@ function initSectionToggles() {
     x2: document.getElementById("x2")
     };
 
-  let activeSection = null; // id de la sección actualmente filtrada
+    let activeSection = null;
 
     function showAllSections() {
     Object.values(sections).forEach((sec) => {
-        if (sec) sec.style.display = "";
+    if (sec) sec.style.display = "";
     });
     }
 
     function showOnly(sectionId) {
     Object.entries(sections).forEach(([id, sec]) => {
-        if (!sec) return;
-        sec.style.display = id === sectionId ? "" : "none";
+    if (!sec) return;
+    sec.style.display = id === sectionId ? "" : "none";
     });
     }
 
@@ -79,33 +77,28 @@ function initSectionToggles() {
         const target = btn.getAttribute("data-target");
         if (!target) return;
 
-      // Si clickeo el mismo botón activo -> muestro todas las secciones
         if (activeSection === target) {
         activeSection = null;
         buttons.forEach((b) => b.classList.remove("active"));
         showAllSections();
         return;
-    }
+        }
 
-      // Activar una nueva sección
         activeSection = target;
         buttons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-
         showOnly(target);
 
-    const sec = sections[target];
-    if (sec) {
+        const sec = sections[target];
+        if (sec) {
         sec.scrollIntoView({ behavior: "smooth" });
-    }
+        }
     });
     });
 
-  // Al inicio: todas visibles
     showAllSections();
 }
 
-// Ejecutar al cargar el DOM
 document.addEventListener("DOMContentLoaded", () => {
     initPropertyCarousels();
     initSectionToggles();
