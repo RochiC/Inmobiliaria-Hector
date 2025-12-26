@@ -121,7 +121,6 @@ function initSectionToggles() {
 // MODAL DE DETALLES - Función genérica
 function openPropertyDetailsFromCard(card) {
     const modal = document.getElementById("detailsModal");
-    
     const title = card.dataset.title;
     const location = card.dataset.location;
     const price = card.dataset.price;
@@ -135,25 +134,53 @@ function openPropertyDetailsFromCard(card) {
     <p><strong>Precio:</strong> ${price}</p>
     <p>${description}</p>
     
-    <h3>Galería de imágenes</h3>
-    <div class="modal-gallery">
+    <h3>Detalles</h3>
+    <ul>
     `;
 
-    images.forEach((img) => {
-    html += `<img src="${img}" alt="${title}" style="width: 100%; margin: 10px 0; border-radius: 4px;">`;
-    });
-
-    html += `</div><h3>Detalles</h3><ul>`;
-
-    Object.entries(details).forEach(([key, value]) => {
+    Object.entries(details).forEach(([key, value]) => 
+    {
     html += `<li><strong>${key}:</strong> ${value}</li>`;
     });
 
-    html += `</ul>`;
+    html += `
+    </ul>
+    
+    <h3>Galería de imágenes</h3>
+    <div class="modal-carousel" id="modalCarousel">
+        <button class="carousel-btn prev modal-prev">‹</button>
+        <img id="modalCarouselImage" src="${images[0]}" alt="${title}" style="width: 100%; border-radius: 4px;">
+        <button class="carousel-btn next modal-next">›</button>
+    </div>
+    `;
 
     document.getElementById("modalBody").innerHTML = html;
+
+  // Carrusel dentro del modal
+    let currentIndex = 0;
+    const prevBtn = document.querySelector(".modal-prev");
+    const nextBtn = document.querySelector(".modal-next");
+    const imgElement = document.getElementById("modalCarouselImage");
+
+    function showImage(index) 
+    {
+    currentIndex = (index + images.length) % images.length;
+    imgElement.src = images[currentIndex];
+    }
+
+    prevBtn.addEventListener("click", () => 
+    {
+    showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener("click", () => 
+    {
+    showImage(currentIndex + 1);
+    });
+
     modal.style.display = "block";
 }
+
 
 // INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
