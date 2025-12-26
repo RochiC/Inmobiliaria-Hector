@@ -9,7 +9,7 @@
 <body>
 
     <!-- HEADER -->
-    <header>
+<header>
     <div class="top-bar">
         <span>Tel: 2267-402688</span>
         <span>|</span>
@@ -26,10 +26,10 @@
         </ul>
         </nav>
     </div>
-    </header>
+</header>
 
     <!-- HERO -->
-    <section class="hero" id="inicio">
+<section class="hero" id="inicio">
     <div class="hero-content">
         <h1>Inmobiliaria Hector Braganza</h1>
         <div class="hero-cta">
@@ -43,48 +43,130 @@
     </div>
     </section>
 
-    <!-- PROPIEDADES EN VENTA -->
-    <main>
+<!-- PROPIEDADES EN VENTA -->
+<main>
     <div class="section-title" id="venta">
         <h2>Propiedades en venta</h2>
         <p>Terrenos y departamentos en zonas elegidas, pensados para tu bienestar y el de tu familia.</p>
     </div>
 
-    <div class="property-filters">
-        <button class="filter-pill" data-target="casas">CASAS Y DEPARTAMENTOS</button>
-        <button class="filter-pill" data-target="lotes">LOTES Y CHACRAS</button>
-        <button class="filter-pill" data-target="x1">X</button>
-        <button class="filter-pill" data-target="x2">X</button>
+    <!-- BOTÓN 1 CAMPOS -->
+    <button class="filter-pill no-scroll" data-target="campos">CAMPOS, CHACRAS, LOTES, TERRENOS Y QUINTAS</button>
+    <section id="campos" class="property-section">
+    <div class="properties-grid">
+
+    <!-- TARJETA 1: Colonia Marina -->
+        <article class="property-card"
+            data-title="Colonia Marina"
+            data-location="Entre Villa Gesell y Mar de las Pampas"
+            data-price="USD 280.000"
+            data-description="Terreno en ubicación privilegiada a tres cuadras del mar."
+            data-images="img/campos/colonia marina 1.jpeg,img/campos/colonia marina.jpeg,img/campos/colonia marina 2.jpeg,img/campos/colonia marina 3.jpeg,img/campos/colonia marina 4.jpeg"
+            data-details='{"ubicacion":"Av 4 y Paseo 174","distancia":"3 cuadras del mar"}'>
+
+    <div class="property-image" data-images="img/campos/colonia marina 1.jpeg,img/campos/colonia marina.jpeg,img/campos/colonia marina 2.jpeg,img/campos/colonia marina 3.jpeg,img/campos/colonia marina 4.jpeg">
+    <button class="carousel-btn prev">‹</button>
+    <img class="carousel-image" src="img/campos/colonia marina 1.jpeg" alt="Colonia Marina">
+    <button class="carousel-btn next">›</button>
     </div>
 
+    <div class="property-body">
+    <div class="property-tag">En venta · terreno</div>
+    <h3 class="property-title">Colonia Marina</h3>
+    <p class="property-location">Entre Villa Gesell y Mar de las Pampas</p>
+    <div class="property-meta">
+        <span>Calles: Av 4 y Paseo 174 a tres cuadras del mar</span>
+    </div>
+    <div class="property-price">USD 280.000</div>
+    </div>
+
+    <div class="property-footer">
+    <a href="javascript:void(0)" class="view-details">Ver más detalles</a>
+    </div>
+</article>  
+
+<!-- TARJETA 2: Campo General Madariaga -->
+        <article class="property-card"
+            data-title="Terreno General Madariaga"
+            data-location="Entre Villa Gesell y Mar de las Pampas"
+            data-price="USD 280.000"
+            data-description="Terreno en ubicación privilegiada a tres cuadras del mar."
+            data-images="img/campos/colonia marina 1.jpeg,img/campos/colonia marina.jpeg,img/campos/colonia marina 2.jpeg,img/campos/colonia marina 3.jpeg,img/campos/colonia marina 4.jpeg"
+            data-details='{"ubicacion":"Av 4 y Paseo 174","distancia":"3 cuadras del mar"}'>
+
+    <div class="property-image" data-images="img/campos/colonia marina 1.jpeg,img/campos/colonia marina.jpeg,img/campos/colonia marina 2.jpeg,img/campos/colonia marina 3.jpeg,img/campos/colonia marina 4.jpeg">
+    <button class="carousel-btn prev">‹</button>
+    <img class="carousel-image" src="img/campos/colonia marina 1.jpeg" alt="Colonia Marina">
+    <button class="carousel-btn next">›</button>
+    </div>
+
+    <div class="property-body">
+    <div class="property-tag">En venta · terreno</div>
+    <h3 class="property-title">Terreno General Madariaga</h3>
+    <p class="property-location">3 Ubicado en Barrio Belgrano</p>
+    <div class="property-meta">
+        <span>Calles: Av 4 y Paseo 174 a tres cuadras del mar</span>
+    </div>
+    <div class="property-price">USD 280.000</div>
+    </div>
+
+    <div class="property-footer">
+    <a href="javascript:void(0)" class="view-details">Ver más detalles</a>
+    </div>
+</article>  
+
+<!-- TARJETA 2: Campo General Madariaga -->
+        <article class="property-card">
+        <div class="property-image" data-images="img/campos/campo hector.png,img/campos/terreno hector.png">
+    <button class="carousel-btn prev">‹</button>
+    <img class="carousel-image" src="img/campos/campo hector.png" alt="Departamento en Villa Gesell">
+    <button class="carousel-btn next">›</button>
+    </div>
+    <div class="property-body">
+    <div class="property-tag">En venta · Terreno</div>
+    <h3 class="property-title">Terreno General Madariaga</h3>
+    <p class="property-location">Ubicado en Barrio Belgrano</p>
+    <div class="property-meta">
+        <span>3 hectáreas</span>
+    </div>
+    <div class="property-price">USD 70.000</div>
+    </div>
+
+    <div class="property-footer">
+            <a href="javascript:void(0)" class="view-details">Ver más detalles</a>
+    </div>
+</article>
+
+    </div>
+    </section>
+
+    <!-- BOTÓN 2 DEPTOS Y CASAS -->
+    <button class="filter-pill no-scroll" data-target="casas">CASAS Y DEPARTAMENTOS</button>
+    
     <section id="casas" class="property-section">
-        <h3 class="property-section-title">CASAS Y DEPARTAMENTOS</h3>
-        <div class="properties-grid">
-        <!-- cards casas/deptos -->
-        </div>
+    <div class="properties-grid">
+
+    </div>
     </section>
 
-    <section id="lotes" class="property-section">
-        <h3 class="property-section-title">LOTES Y CHACRAS</h3>
-        <div class="properties-grid">
-        <!-- cards lotes/chacras -->
-        </div>
+    <!-- BOTÓN 3 HOTELES Y APARTS -->
+    <button class="filter-pill no-scroll" data-target="hoteles">HOTELES, APARTS Y CABAÑAS</button>
+    
+    <section id="hoteles" class="property-section">
+    <div class="properties-grid">
+
+    </div>
     </section>
 
-    <section id="x1" class="property-section">
-        <h3 class="property-section-title">X</h3>
-        <div class="properties-grid">
-        <!-- cards X -->
-        </div>
-    </section>
+    <!-- BOTÓN 4 GALPONES -->
+    <button class="filter-pill no-scroll" data-target="galpones">GALPONES Y DESARROLLOS</button>
+    
+    <section id="galpones" class="property-section">
+    <div class="properties-grid">
 
-    <section id="x2" class="property-section">
-        <h3 class="property-section-title">X</h3>
-        <div class="properties-grid">
-        <!-- vacío -->
-        </div>
+    </div>
     </section>
-    </main>
+</main>
 
     <!-- FOOTER -->
     <footer id="contacto">
@@ -110,5 +192,16 @@
     </footer>
 
     <script src="main.js"></script>
+
+    <!-- MODAL DE DETALLES -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalBody">
+        <!-- Se llena con JS -->
+    </div>
+    </div>
+</div>
+
 </body>
 </html>

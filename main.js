@@ -1,18 +1,19 @@
 function toggleMenu() {
     const menu = document.getElementById("nav-menu");
-    if (menu) {
-    menu.classList.toggle("show");
+    if (menu) 
+    {
+        menu.classList.toggle("show");
     }
 }
 
 function scrollToSection(id) {
     const el = document.getElementById(id);
-    if (el) {
+    if (el) 
+    {
     el.scrollIntoView({ behavior: "smooth" });
     }
 }
 
-// carrusel genérico (lo que ya tenías)
 function initPropertyCarousels() {
     const carousels = document.querySelectorAll(".property-image[data-images]");
 
@@ -32,43 +33,59 @@ function initPropertyCarousels() {
     let currentIndex = 0;
     imgElement.src = images[currentIndex];
 
-    function showImage(index) {
+    function showImage(index) 
+    {
         currentIndex = (index + images.length) % images.length;
         imgElement.src = images[currentIndex];
     }
 
-    prevBtn.addEventListener("click", () => {
+    prevBtn.addEventListener("click", () => 
+    {
         showImage(currentIndex - 1);
     });
 
-    nextBtn.addEventListener("click", () => {
+    nextBtn.addEventListener("click", () => 
+    {
         showImage(currentIndex + 1);
     });
     });
 }
 
-// mostrar / ocultar secciones por botón
 function initSectionToggles() {
     const buttons = document.querySelectorAll(".filter-pill");
     const sections = {
+    campos: document.getElementById("campos"),
     casas: document.getElementById("casas"),
-    lotes: document.getElementById("lotes"),
-    x1: document.getElementById("x1"),
-    x2: document.getElementById("x2")
+    hoteles: document.getElementById("hoteles"),
+    galpones: document.getElementById("galpones")
     };
 
     let activeSection = null;
 
-    function showAllSections() {
-    Object.values(sections).forEach((sec) => {
-    if (sec) sec.style.display = "";
+    function showAllSections() 
+    {
+    Object.values(sections).forEach((sec) => 
+    {
+        if (sec) 
+        {
+        sec.style.display = "none";
+        sec.classList.remove("active");
+        }
     });
     }
 
     function showOnly(sectionId) {
     Object.entries(sections).forEach(([id, sec]) => {
-    if (!sec) return;
-    sec.style.display = id === sectionId ? "" : "none";
+        if (!sec) return;
+        if (id === sectionId) {
+        sec.style.display = "";
+        sec.classList.add("active");
+        } 
+        else 
+        {
+        sec.style.display = "none";
+        sec.classList.remove("active");
+        }
     });
     }
 
@@ -89,9 +106,11 @@ function initSectionToggles() {
         btn.classList.add("active");
         showOnly(target);
 
+        if (!btn.classList.contains("no-scroll")) {
         const sec = sections[target];
         if (sec) {
-        sec.scrollIntoView({ behavior: "smooth" });
+            sec.scrollIntoView({ behavior: "smooth" });
+        }
         }
     });
     });
@@ -99,7 +118,68 @@ function initSectionToggles() {
     showAllSections();
 }
 
+// MODAL DE DETALLES - Función genérica
+function openPropertyDetailsFromCard(card) {
+    const modal = document.getElementById("detailsModal");
+    
+    const title = card.dataset.title;
+    const location = card.dataset.location;
+    const price = card.dataset.price;
+    const description = card.dataset.description;
+    const images = card.dataset.images.split(",").map(s => s.trim());
+    const details = JSON.parse(card.dataset.details);
+
+    let html = `
+    <h2>${title}</h2>
+    <p><strong>Ubicación:</strong> ${location}</p>
+    <p><strong>Precio:</strong> ${price}</p>
+    <p>${description}</p>
+    
+    <h3>Galería de imágenes</h3>
+    <div class="modal-gallery">
+    `;
+
+    images.forEach((img) => {
+    html += `<img src="${img}" alt="${title}" style="width: 100%; margin: 10px 0; border-radius: 4px;">`;
+    });
+
+    html += `</div><h3>Detalles</h3><ul>`;
+
+    Object.entries(details).forEach(([key, value]) => {
+    html += `<li><strong>${key}:</strong> ${value}</li>`;
+    });
+
+    html += `</ul>`;
+
+    document.getElementById("modalBody").innerHTML = html;
+    modal.style.display = "block";
+}
+
+// INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("detailsModal");
+    const closeBtn = document.querySelector(".close");
+
+    if (closeBtn) {
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+    };
+    }
+
+    window.onclick = (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+    };
+
+  // Abrir modal al hacer clic en "Ver más detalles"
+    document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("view-details")) {
+        const card = e.target.closest(".property-card");
+        openPropertyDetailsFromCard(card);
+    }
+    });
+
     initPropertyCarousels();
     initSectionToggles();
 });
