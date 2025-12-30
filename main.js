@@ -125,8 +125,8 @@ function openPropertyDetailsFromCard(card) {
     const location = card.dataset.location;
     const price = card.dataset.price;
     const description = card.dataset.description;
+    const detailsText = card.dataset.detailsText || "Detalles";
     const images = card.dataset.images.split(",").map(s => s.trim());
-    const details = JSON.parse(card.dataset.details);
 
     let html = `
     <div class="modal-layout">
@@ -138,16 +138,7 @@ function openPropertyDetailsFromCard(card) {
             <p>${description}</p>
         </div>
         <div class="modal-right">
-            <h3>Detalles</h3>
-            <ul>
-    `;
-
-    Object.entries(details).forEach(([key, value]) => {
-    html += `<li><strong>${key}:</strong> ${value}</li>`;
-    });
-
-    html += `
-            </ul>
+            <p>${detailsText}</p>
         </div>
         </div>
 
@@ -155,17 +146,39 @@ function openPropertyDetailsFromCard(card) {
         <div class="modal-gallery">
     `;
 
-    images.forEach((img) => {
-    html += `<img src="${img}" alt="${title}">`;
+    images.forEach((img, index) => {
+    html += `<img src="${img}" alt="${title}" class="gallery-img" data-index="${index}">`;
     });
 
     html += `
         </div>
         </div>
     </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <img id="lightboxImage" src="" alt="">
+    </div>
     `;
 
     document.getElementById("modalBody").innerHTML = html;
+
+  // Event listeners para el lightbox
+    const galleryImages = document.querySelectorAll(".gallery-img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+
+    galleryImages.forEach((img) => {
+    img.addEventListener("click", () => {
+        lightboxImage.src = img.src;
+        lightbox.style.display = "flex";
+    });
+    });
+
+    lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+    });
+
     modal.style.display = "block";
 }
 

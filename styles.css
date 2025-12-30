@@ -481,7 +481,7 @@ nav ul.show {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 0;
-    border: 2px solid #000;
+    border: none;
     width: 90%;
     max-width: 900px;
     border-radius: 0;
@@ -490,6 +490,7 @@ nav ul.show {
     display: flex;
     flex-direction: column;
 }
+
 
 #modalBody {
     overflow: hidden;
@@ -505,7 +506,7 @@ nav ul.show {
     display: flex;
     gap: 1rem;
     padding: 1.5rem;
-    border-bottom: 2px solid #000;
+    border-bottom: none; 
     flex: 0 0 auto;
 }
 
@@ -575,6 +576,25 @@ nav ul.show {
     display: block;
 }
 
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#lightboxImage {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 4px;
+}
 
 
 .close {
