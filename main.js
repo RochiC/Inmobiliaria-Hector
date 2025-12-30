@@ -129,57 +129,46 @@ function openPropertyDetailsFromCard(card) {
     const details = JSON.parse(card.dataset.details);
 
     let html = `
-    <h2>${title}</h2>
-    <p><strong>Ubicación:</strong> ${location}</p>
-    <p><strong>Precio:</strong> ${price}</p>
-    <p>${description}</p>
-    
-    <h3>Detalles</h3>
-    <ul>
+    <div class="modal-layout">
+        <div class="modal-top">
+        <div class="modal-left">
+            <h2>${title}</h2>
+            <p><strong>Ubicación:</strong> ${location}</p>
+            <p><strong>Precio:</strong> ${price}</p>
+            <p>${description}</p>
+        </div>
+        <div class="modal-right">
+            <h3>Detalles</h3>
+            <ul>
     `;
 
-    Object.entries(details).forEach(([key, value]) => 
-    {
+    Object.entries(details).forEach(([key, value]) => {
     html += `<li><strong>${key}:</strong> ${value}</li>`;
     });
 
     html += `
-    </ul>
-    
-    <h3>Galería de imágenes</h3>
-    <div class="modal-carousel" id="modalCarousel">
-        <button class="carousel-btn prev modal-prev">‹</button>
-        <img id="modalCarouselImage" src="${images[0]}" alt="${title}" style="width: 100%; border-radius: 4px;">
-        <button class="carousel-btn next modal-next">›</button>
+            </ul>
+        </div>
+        </div>
+
+        <div class="modal-bottom">
+        <div class="modal-gallery">
+    `;
+
+    images.forEach((img) => {
+    html += `<img src="${img}" alt="${title}">`;
+    });
+
+    html += `
+        </div>
+        </div>
     </div>
     `;
 
     document.getElementById("modalBody").innerHTML = html;
-
-  // Carrusel dentro del modal
-    let currentIndex = 0;
-    const prevBtn = document.querySelector(".modal-prev");
-    const nextBtn = document.querySelector(".modal-next");
-    const imgElement = document.getElementById("modalCarouselImage");
-
-    function showImage(index) 
-    {
-    currentIndex = (index + images.length) % images.length;
-    imgElement.src = images[currentIndex];
-    }
-
-    prevBtn.addEventListener("click", () => 
-    {
-    showImage(currentIndex - 1);
-    });
-
-    nextBtn.addEventListener("click", () => 
-    {
-    showImage(currentIndex + 1);
-    });
-
     modal.style.display = "block";
 }
+
 
 
 // INICIALIZACIÓN
