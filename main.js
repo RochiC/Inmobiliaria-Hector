@@ -57,66 +57,47 @@ function initSectionToggles() {
     campos: document.getElementById("campos"),
     casas: document.getElementById("casas"),
     hoteles: document.getElementById("hoteles"),
-    galpones: document.getElementById("galpones")
+    galpones: document.getElementById("galpones"),
     };
 
-    let activeSection = null;
-
-    function showAllSections() 
-    {
-    Object.values(sections).forEach((sec) => 
-    {
-        if (sec) 
-        {
+  // Estado inicial: todo oculto y sin botones activos
+    Object.values(sections).forEach((sec) => {
+    if (sec) {
         sec.style.display = "none";
         sec.classList.remove("active");
-        }
-    });
     }
-
-    function showOnly(sectionId) {
-    Object.entries(sections).forEach(([id, sec]) => {
-        if (!sec) return;
-        if (id === sectionId) {
-        sec.style.display = "";
-        sec.classList.add("active");
-        } 
-        else 
-        {
-        sec.style.display = "none";
-        sec.classList.remove("active");
-        }
     });
-    }
 
     buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
         const target = btn.getAttribute("data-target");
         if (!target) return;
 
-        if (activeSection === target) {
-        activeSection = null;
-        buttons.forEach((b) => b.classList.remove("active"));
-        showAllSections();
-        return;
-        }
+        const section = sections[target];
+        if (!section) return;
 
-        activeSection = target;
-        buttons.forEach((b) => b.classList.remove("active"));
+        const isActive = section.classList.contains("active");
+
+        if (isActive) {
+        // Si YA estaba activa, la cierro
+        section.classList.remove("active");
+        section.style.display = "none";
+        btn.classList.remove("active");
+        } else {
+        // Si estaba cerrada, la abro (sin tocar las otras)
+        section.classList.add("active");
+        section.style.display = "block";
         btn.classList.add("active");
-        showOnly(target);
 
+        // Solo scrolleo si no tiene clase no-scroll
         if (!btn.classList.contains("no-scroll")) {
-        const sec = sections[target];
-        if (sec) {
-            sec.scrollIntoView({ behavior: "smooth" });
+            section.scrollIntoView({ behavior: "smooth" });
         }
         }
     });
     });
-
-    showAllSections();
 }
+
 
 // MODAL DE DETALLES - Función genérica
 function openPropertyDetailsFromCard(card) {

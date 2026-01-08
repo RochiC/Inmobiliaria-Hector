@@ -89,12 +89,14 @@ background:
     center/cover no-repeat;
 color: #1c1c18;
 padding: 16rem;
+position: relative;
 }
 
 .hero-content {
     max-width: var(--max-width);
     margin: 0 auto;
     margin-top: -5rem; 
+    position: relative;
 }
 
 .hero h1 {
@@ -127,6 +129,44 @@ display: flex;
 flex-wrap: wrap;
 gap: 0.8rem;
 }
+
+.hero-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* espacio entre logo y título */
+    margin-bottom: 1rem;
+}
+
+.hero-logo {
+  height: 60px;         /* ajustá según cómo se vea */
+    width: auto;
+}
+
+/* En pantallas chicas, que se apilen si querés */
+@media (max-width: 600px) {
+    .hero-heading {
+    flex-direction: row;   /* si lo querés igual en fila, dejalo así */
+    align-items: center;
+    }
+}
+
+.hero-logo-floating {
+    position: absolute;
+    left: -90px;  /* o -60px, probá valores */
+    top: 20px;
+    height: 100px;
+}
+
+
+/* Opcional: en mobile, hacelo más chico o movelo */
+@media (max-width: 600px) {
+    .hero-logo-floating {
+    height: 40px;
+    top: 20px;
+    left: 15px;
+    }
+}
+
 
 .btn {
 padding: 0.6rem 1rem;
@@ -173,6 +213,18 @@ color: #555;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.6rem;
+}
+
+@media (max-width: 1024px) {
+    .properties-grid {
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .properties-grid {
+    grid-template-columns: 1fr;
+    }
 }
 
 
@@ -299,7 +351,7 @@ font-weight: 600;
 footer {
 background: #525245;
 color: #e5e7eb;
-padding: 10rem 1rem;
+padding: 3rem 1rem;
 }
 
 .footer-inner {
@@ -381,7 +433,10 @@ font-size: 1.4rem;
     flex-direction: column;
     width: 180px;
     padding: 0.5rem 0;
-    display: none;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.95rem;
 }
 
 nav ul.show {
